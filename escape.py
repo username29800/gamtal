@@ -1,22 +1,22 @@
-import pygame
-pygame.init()
+import pygame as pg
+pg.init()
 
 screen_width = 1300
 screen_height = 790
 
-screen = pygame.display.set_mode((screen_width, screen_height))
+screen = pg.display.set_mode((screen_width, screen_height))
 
-pygame.display.set_caption("school escape")
+pg.display.set_caption("school escape")
 
-background = pygame.image.load("C:/python/game/back.png")
+background = pg.image.load("asset/bgimg/back.png")
 
 running = True
 while running:
-    for event in pygame.event.get():
-        if event.type == pygame.QUIT:
+    for event in pg.event.get():
+        if event.type == pg.QUIT:
             running = False
 
     screen.blit(background, (0, 0))
-    pygame.display.update()
+    pg.display.update()
 
-pygame.quit()
+pg.quit()
