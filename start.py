@@ -16,17 +16,18 @@ stbtn=pg.Rect(65,605,980,106)
 pg.mouse.set_cursor(pg.cursors.diamond)
 #tick regulator init
 tr=0 
+rc=0
 while running:
-  for event in pg.event.get():
-    if event.type==pg.QUIT:
-      running=False
+  if pg.event.get(pg.QUIT):
+    running=False
   clock.tick(1024)
   screen.blit(sti,(0,0))
   # start the game
   if stbtn.collidepoint(pg.mouse.get_pos()):
     if pg.event.get(pg.MOUSEBUTTONDOWN):
       print("game start signal")
-      break()
+      rc=1
+      running=False
     else:
      stc.centerx,stc.centery=pg.mouse.get_pos()[0],pg.mouse.get_pos()[1]
      pg.mouse.set_visible(False)
@@ -34,7 +35,11 @@ while running:
   else:
     pg.mouse.set_visible(True)
   pg.display.flip()
- while running:
-   if event.get(pg.QUIT):
-     running=False
-     # add code for the first stage //1스테이지 코드 추가
+if rc==1:
+  running=True
+pg.display.set_caption("STAGE 1")
+while running:
+  if pg.event.get(pg.QUIT):
+    running=False
+  clock.tick(1024)
+  # add code for the first stage //1스테이지 코드 추가
