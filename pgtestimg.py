@@ -1,12 +1,13 @@
 import pygame as pg
 pg.init()
-sti=pg.image.load("back.png")
+sti=pg.image.load("./asset/bg/back.png")
 screen=pg.display.set_mode((sti.get_rect().size))
 clock=pg.time.Clock()
 running=True
 r1=pg.Rect(200,200,100,100)
 r2=pg.Rect(10,10,100,70)
-pg.mouse.set_visible(False)
+#start button
+stbtn=pg.Rect(65,605,980,106)
 tr=0 
 while running:
   for event in pg.event.get():
@@ -22,6 +23,10 @@ while running:
   else:
     r2.y+=1
     tr=0
-  pg.draw.rect(screen,"white",r1)
+  pg.draw.rect(screen,(0,0,0,50),stbtn)
   pg.draw.rect(screen,"blue",r2)
+  pg.draw.rect(screen,"white",r1)
+  # start the game
+  if stbtn.collidepoint(pg.mouse.get_pos()) and pg.event.get(pg.MOUSEBUTTONDOWN):
+    print("game start signal")
   pg.display.flip()
