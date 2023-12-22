@@ -1,18 +1,20 @@
 import pygame as pg
 pg.init()
-sti=pg.image.load("./asset/bg/back.png")
+sti=pg.image.load("back.png")
 screen=pg.display.set_mode((sti.get_rect().size))
 clock=pg.time.Clock()
 running=True
-r1=pg.Rect(50,50,100,100)
+r1=pg.Rect(200,200,100,100)
 r2=pg.Rect(10,10,100,70)
 pg.mouse.set_visible(False)
-tr=0
+tr=0 
 while running:
   for event in pg.event.get():
     if event.type==pg.QUIT:
       running=False
   clock.tick(1024)
+  if r1.colliderect(r2):
+    running=False
   screen.blit(sti,(0,0))
   r1.centerx,r1.centery=pg.mouse.get_pos()[0],pg.mouse.get_pos()[1]
   if tr<7:
