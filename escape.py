@@ -8,7 +8,7 @@ screen = pg.display.set_mode((screen_width, screen_height))
 
 pg.display.set_caption("school escape")
 
-background = pg.image.load("asset/bgimg/back.png")
+background = pg.image.load("./asset/bg/back.png")
 
 running = True
 while running:

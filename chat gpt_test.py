@@ -12,7 +12,7 @@ screen = pygame.display.set_mode((screen_width, screen_height))
 pygame.display.set_caption("학교 탈출 게임")
 
 # 배경 이미지 불러오기
-background = pygame.image.load("C:/python/game/classroom.png")  # 배경 이미지 파일이름을 실제 파일 이름으로 바꾸세요
+background = pygame.image.load("./asset/bg/classroom.png")  # 배경 이미지 파일이름을 실제 파일 이름으로 바꾸세요
 
 # 거북이 설정
 turtle_width = 35   
