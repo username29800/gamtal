@@ -26,6 +26,7 @@ while running:
   if stbtn.collidepoint(pg.mouse.get_pos()):
     if pg.event.get(pg.MOUSEBUTTONDOWN):
       print("game start signal")
+      break()
     else:
      stc.centerx,stc.centery=pg.mouse.get_pos()[0],pg.mouse.get_pos()[1]
      pg.mouse.set_visible(False)
@@ -33,3 +34,7 @@ while running:
   else:
     pg.mouse.set_visible(True)
   pg.display.flip()
+ while running:
+   if event.get(pg.QUIT):
+     running=False
+     # add code for the first stage //1스테이지 코드 추가
