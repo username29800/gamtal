@@ -8,8 +8,6 @@ screen=pg.display.set_mode((sti.get_rect().size))
 clock=pg.time.Clock()
 running=True
 #sprite rect
-# r1=pg.Rect(200,200,100,100)
-# r2=pg.Rect(10,10,100,70)
 sto=pg.image.load("./asset/others/cursorstart.png")
 stc=sto.get_rect()
 #start button
@@ -24,23 +22,6 @@ while running:
       running=False
   clock.tick(1024)
   screen.blit(sti,(0,0))
-  # collision detection
-  '''
-  if r1.colliderect(r2):
-    running=False
-  r1.centerx,r1.centery=pg.mouse.get_pos()[0],pg.mouse.get_pos()[1] #mouse pointer tracking
-  '''
-  # tick regulator
-  '''
-  if tr<7:
-    tr+=1
-  else:
-    r2.y+=1
-    tr=0
-  '''
-  #pg.draw.rect(screen,(0,0,0,50),stbtn)
-  #pg.draw.rect(screen,"blue",r2)
-  #pg.draw.rect(screen,"white",r1)
   # start the game
   if stbtn.collidepoint(pg.mouse.get_pos()):
     if pg.event.get(pg.MOUSEBUTTONDOWN):
