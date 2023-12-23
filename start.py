@@ -51,8 +51,19 @@ if rc==1:
     else:
       tr=0
     return tr
+  #init
+  tr=0
+  # assign rect to character 플레이어 사각형 생성
+  pci0=pg.image.load("./asset/entity/char1.png")
+  pci=pg.image.load("./asset/entity/char2.png")
+  pcr0=pci0.get.rect()
+  pcr=pci.get.rect()
 while running:
   if pg.event.get(pg.QUIT):
     running=False
   clock.tick(1024)
+  #이미지 전환
+  prt=clock.get_fps()/2
   # add code for the first stage //1스테이지 코드 추가
+  # player_mouse pointer tracker
+  
