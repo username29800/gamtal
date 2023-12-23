@@ -3,7 +3,7 @@ pg.init()
 #background image
 sti=pg.image.load("./asset/bg/back.png")
 #screen Surface init
-screen=pg.display.set_mode((sti.get_rect().size))
+screen=pg.display.set_mode(sti.get_rect().size)
 #clock init
 clock=pg.time.Clock()
 running=True
@@ -28,6 +28,7 @@ while running:
       print("game start signal")
       rc=1
       running=False
+      pg.mouse.set_visible(True)
     else:
      stc.centerx,stc.centery=pg.mouse.get_pos()[0],pg.mouse.get_pos()[1]
      pg.mouse.set_visible(False)
@@ -37,7 +38,19 @@ while running:
   pg.display.flip()
 if rc==1:
   running=True
-pg.display.set_caption("STAGE 1")
+  pg.display.set_caption("STAGE 1")
+  bg=pg.image.load("./asset/bg/stg1bg.png")
+  screen=pg.display.set_mode(bg.get_rect().size)
+  screen.blit(bg,(0,0))
+  #tick regulator 실행 속도 조절기
+  #tr=외부 변수 입력 (위 코드에서 tr)
+  #m=tr값 한계치(tr변수 리셋 기준점)
+  def treg(tr,m):
+    if tr<=m:
+      tr+=1
+    else:
+      tr=0
+    return tr
 while running:
   if pg.event.get(pg.QUIT):
     running=False
