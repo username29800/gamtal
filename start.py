@@ -40,30 +40,44 @@ if rc==1:
   running=True
   pg.display.set_caption("STAGE 1")
   bg=pg.image.load("./asset/bg/stg1bg.png")
+  bg=pg.transform.scale(bg,(bg.get_rect().w*2.5,bg.get_rect().h*1.5))
   screen=pg.display.set_mode(bg.get_rect().size)
   screen.blit(bg,(0,0))
-  #tick regulator 실행 속도 조절기
-  #tr=외부 변수 입력 (위 코드에서 tr)
-  #m=tr값 한계치(tr변수 리셋 기준점)
-  def treg(tr,m):
-    if tr<=m:
-      tr+=1
-    else:
-      tr=0
-    return tr
-  #init
+  pg.mouse.set_visible(False)
   tr=0
   # assign rect to character 플레이어 사각형 생성
   pci0=pg.image.load("./asset/entity/char1.png")
+  pci0=pg.transform.scale(pci0,(pci0.get_rect().size[0]/8,pci0.get_rect().size[1]/8))
   pci=pg.image.load("./asset/entity/char2.png")
-  pcr0=pci0.get.rect()
-  pcr=pci.get.rect()
+  pci=pg.transform.scale(pci,(pci.get_rect().size[0]/8,pci.get_rect().size[1]/8))
+  pcr0=pci0.get_rect()
+  pcr=pci.get_rect()
+  pcu=pcr0
+  piu=pci0
 while running:
   if pg.event.get(pg.QUIT):
     running=False
   clock.tick(1024)
   #이미지 전환
-  prt=clock.get_fps()/2
+  if tr<4:
+    tr+=1
+  else:
+    if pcu==pcr0:
+      pcu=pcr
+      piu=pci
+      tr=0
+    elif pcu==pcr:
+      pcu=pcr0
+      piu=pci0
+      tr=0
   # add code for the first stage //1스테이지 코드 추가
+  # background 배경 draw
+  screen.blit(bg,(0,0))  
   # player_mouse pointer tracker
-  
+  pcu.centerx,pcu.centery=pg.mouse.get_pos()[0],pg.mouse.get_pos()[1]
+  hb=0
+  if hb==1:
+    pg.draw.rect(screen,(0,0,0),pcu)
+  screen.blit(piu,(pcu.left,pcu.top))
+  #render screen
+  pg.display.flip()
