@@ -24,7 +24,7 @@ while running:
   screen.blit(sti,(0,0))
   # start the game
   if stbtn.collidepoint(pg.mouse.get_pos()):
-    if pg.event.get(pg.MOUSEBUTTONDOWN):
+    if pg.mouse.get_pressed()[0]:
       print("game start signal")
       rc=1
       running=False
@@ -55,7 +55,7 @@ if rc==1:
   pcu=pcr0
   piu=pci0
   # obstacle
-  obs0=pg.Rect(0,pg.mouse.get_pos()[1],bg.get_rect().w/4,bg.get_rect().h/16)
+  obs0=pg.Rect(0,bg.get_rect().h/2,bg.get_rect().w/4,bg.get_rect().h/16)
   obs0.right=0
 while running:
   if pg.event.get(pg.QUIT):
@@ -83,13 +83,15 @@ while running:
     pg.draw.rect(screen,(0,0,0),pcu)
   screen.blit(piu,(pcu.left,pcu.top))
   # spawn obstacle 장애물(방해물) 생성
-  obs0.right+=30
+  if abs(obs0.right-pcu.left)>=2:
+    obs0.right+=int(abs(obs0.right-pcu.left)/2)
+  else:
+    obs0.right+=20
   if obs0.left>=bg.get_rect().size[0]:
     obs0.right=0
     #obs0.centery=(pcu.centery+obs0.centery)/2
     obs0.centery=pcu.centery
   pg.draw.rect(screen,(0,0,0),obs0)
-  obs0.right+=30
   pg.draw.rect(screen,(0,0,0),obs0)
   if obs0.colliderect(pcu):
     running=False
