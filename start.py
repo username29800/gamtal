@@ -82,11 +82,15 @@ while running:
     pg.draw.rect(screen,(0,0,0),pcu)
   screen.blit(piu,(pcu.left,pcu.top))
   # spawn obstacle 장애물(방해물) 생성
-  obs0.centery=pcu.centery
+  if pcu.centery-obs0.centery>=5:
+    if pcu.centery>=obs0.centery:
+      obs0.centery=(pcu.centery-obs0.centery)/2
+    else:
+      obs0.centery=(obs0.centery-pcu.centery)/2
   pg.draw.rect(screen,(0,0,0),obs0)
   if pcu.left>obs0.right:
-    obs0.right+=abs(pcu.left-obs0.right)/2
-    if abs(pcu.left-obs0.right)<5:
+    obs0.right=(pcu.left-obs0.right)/2
+    if pcu.left-obs0.right<5:
       obs0.right+=1
   else:
     obs0.right+=4
