@@ -84,9 +84,12 @@ while running:
   # spawn obstacle 장애물(방해물) 생성
   obs0.centery=pcu.centery
   pg.draw.rect(screen,(0,0,0),obs0)
-  obs0.right=abs(pcu.left-obs0.right)/2
-  if abs(pcu.left-obs0.right)<5:
-    obs0.right+=1
+  if pcu.left>obs0.right:
+    obs0.right+=abs(pcu.left-obs0.right)/2
+    if abs(pcu.left-obs0.right)<5:
+      obs0.right+=1
+  else:
+    obs0.right+=4
   if obs0.colliderect(pcu):
     running=False
     rc=0
