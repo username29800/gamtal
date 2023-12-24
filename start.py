@@ -54,6 +54,8 @@ if rc==1:
   pcr=pci.get_rect()
   pcu=pcr0
   piu=pci0
+  # obstacle
+  obs0=pg.Rect(0,0,bg.get_rect().w/4,bg.get_rect().h/16)
 while running:
   if pg.event.get(pg.QUIT):
     running=False
@@ -79,5 +81,14 @@ while running:
   if hb==1:
     pg.draw.rect(screen,(0,0,0),pcu)
   screen.blit(piu,(pcu.left,pcu.top))
-  #render screen
+  # spawn obstacle 장애물(방해물) 생성
+  obs0.centery=pcu.centery
+  pg.draw.rect(screen,(0,0,0),obs0)
+  obs0.right=abs(pcu.left-obs0.right)/2
+  if abs(pcu.left-obs0.right)<5:
+    obs0.right+=1
+  if obs0.colliderect(pcu):
+    running=False
+    rc=0
+  # render screen
   pg.display.flip()
