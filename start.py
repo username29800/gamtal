@@ -56,6 +56,7 @@ if rc==1:
   piu=pci0
   # obstacle
   obs0=pg.Rect(0,pg.mouse.get_pos()[1],bg.get_rect().w/4,bg.get_rect().h/16)
+  obs0.right=0
 while running:
   if pg.event.get(pg.QUIT):
     running=False
@@ -84,8 +85,11 @@ while running:
   # spawn obstacle 장애물(방해물) 생성
   obs0.right+=30
   if obs0.left>=bg.get_rect().size[0]:
-    obs0.left=0
-    obs0.centery=(pcu.centery+obs0.centery)/2
+    obs0.right=0
+    #obs0.centery=(pcu.centery+obs0.centery)/2
+    obs0.centery=pcu.centery
+  pg.draw.rect(screen,(0,0,0),obs0)
+  obs0.right+=30
   pg.draw.rect(screen,(0,0,0),obs0)
   if obs0.colliderect(pcu):
     running=False
