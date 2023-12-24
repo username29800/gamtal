@@ -43,7 +43,6 @@ if rc==1:
   bg=pg.transform.scale(bg,(bg.get_rect().w*2.5,bg.get_rect().h*1.5))
   screen=pg.display.set_mode(bg.get_rect().size)
   screen.blit(bg,(0,0))
-  pg.mouse.set_visible(False)
   tr=0
   # assign rect to character 플레이어 사각형 생성
   pci0=pg.image.load("./asset/entity/char1.png")
@@ -52,10 +51,8 @@ if rc==1:
   pci=pg.transform.scale(pci,(pci.get_rect().size[0]/8,pci.get_rect().size[1]/8))
   pcr0=pci0.get_rect()
   pcr=pci.get_rect()
-  pcu=pcr0
-  piu=pci0
-  # obstacle
-  obs0=pg.Rect(0,pg.mouse.get_pos()[1],bg.get_rect().w/4,bg.get_rect().h/16)
+  pcu=pcr
+  piu=pci
 while running:
   if pg.event.get(pg.QUIT):
     running=False
@@ -80,15 +77,8 @@ while running:
   hb=0
   if hb==1:
     pg.draw.rect(screen,(0,0,0),pcu)
-  screen.blit(piu,(pcu.left,pcu.top))
-  # spawn obstacle 장애물(방해물) 생성
-  obs0.right+=30
-  if obs0.left>=bg.get_rect().size[0]:
-    obs0.left=0
-    obs0.centery=(pcu.centery+obs0.centery)/2
-  pg.draw.rect(screen,(0,0,0),obs0)
-  if obs0.colliderect(pcu):
-    running=False
-    rc=0
-  # render screen
+  #screen.blit(piu,(pcu.left,pcu.top))
+    pg.mouse.set_cursor(piu)
+    pg.mouse.set_visible(True)
+  #render screen
   pg.display.flip()
