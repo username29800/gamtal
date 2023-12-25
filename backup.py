@@ -56,8 +56,8 @@ if rc==1:
   pcu=pcr0
   piu=pci0
   # obstacle
-  obs0=pg.Rect(bg.get_rect().w/2,0,bg.get_rect().w/48,bg.get_rect().h/6)
-  obs0.bottom=0
+  obs0=pg.Rect(0,bg.get_rect().h/2,bg.get_rect().w/8,bg.get_rect().h/32)
+  obs0.right=0
   fast=0
   fct=0
   vl=0
@@ -97,17 +97,17 @@ while running:
     pg.draw.rect(screen,(0,0,0),pcu)
   screen.blit(piu,(pcu.left,pcu.top))
   # spawn obstacle 장애물(방해물) 생성
-  if abs(obs0.bottom-pcu.top)>=2 and vl!=0:
-    obs0.bottom+=int(abs(obs0.bottom-pcu.top)/2)
+  if abs(obs0.right-pcu.left)>=2 and vl!=0:
+    obs0.right+=int(abs(obs0.right-pcu.left)/2)
   else:
-    obs0.bottom+=60
-  if obs0.top>=bg.get_rect().size[1]:
-    obs0.bottom=0
+    obs0.right+=60
+  if obs0.left>=bg.get_rect().size[0]:
+    obs0.right=0
     vl=random.randint(0,3)
     if random.randint(0,9)<=3:
-      obs0.centerx=pcu.centerx
+      obs0.centery=pcu.centery
     else:
-      obs0.centerx=(pcu.centerx+obs0.centerx)/random.randint(2,3)
+      obs0.centery=(pcu.centery+obs0.centery)/random.randint(2,3)
   pg.draw.rect(screen,(233,233,233),obs0)
   if obs0.colliderect(pcu):
     running=False
