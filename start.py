@@ -1,4 +1,5 @@
 import pygame as pg
+import random,time
 pg.init()
 #background image
 sti=pg.image.load("./asset/bg/back.png")
@@ -55,8 +56,20 @@ if rc==1:
   pcu=pcr0
   piu=pci0
   # obstacle
-  obs0=pg.Rect(0,bg.get_rect().h/2,bg.get_rect().w/4,bg.get_rect().h/16)
+  obs0=pg.Rect(0,bg.get_rect().h/2,bg.get_rect().w/8,bg.get_rect().h/32)
   obs0.right=0
+  fast=0
+  fct=0
+  vl=0
+  # escape
+  #1025,336
+  #1050,360
+  esc1=pg.Rect(1025,336,25,24)
+  c1=0
+  c2=0
+  escc=5
+  cesc=0
+  rc=0
 while running:
   if pg.event.get(pg.QUIT):
     running=False
@@ -83,18 +96,33 @@ while running:
     pg.draw.rect(screen,(0,0,0),pcu)
   screen.blit(piu,(pcu.left,pcu.top))
   # spawn obstacle 장애물(방해물) 생성
-  if abs(obs0.right-pcu.left)>=2:
+  if abs(obs0.right-pcu.left)>=2 and vl!=0:
     obs0.right+=int(abs(obs0.right-pcu.left)/2)
   else:
-    obs0.right+=20
+    obs0.right+=60
   if obs0.left>=bg.get_rect().size[0]:
     obs0.right=0
-    #obs0.centery=(pcu.centery+obs0.centery)/2
-    obs0.centery=pcu.centery
-  pg.draw.rect(screen,(0,0,0),obs0)
-  pg.draw.rect(screen,(0,0,0),obs0)
+    vl=random.randint(0,3)
+    if random.randint(0,9)<=3:
+      obs0.centery=pcu.centery
+    else:
+      obs0.centery=(pcu.centery+obs0.centery)/random.randint(2,3)
+  pg.draw.rect(screen,(233,233,233),obs0)
   if obs0.colliderect(pcu):
     running=False
     rc=0
+  if cesc==0 and pcu.colliderect(esc1):
+    c1=time.time()
+    cesc=1
+  if cesc==1 and not pcu.colliderect(esc1):
+     c2=time.time()
+     cesc=0
+  if c2-c1>0.1:
+    escc-=1
+    c2=0
+    if escc<=0:
+      print("escaped!")
+      running=False
   # render screen
   pg.display.flip()
+  print(c1,c2,cesc,escc)
