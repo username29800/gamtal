@@ -104,7 +104,7 @@ while running:
     if abs(obs0.bottom-pcu.top)>=2 and vl!=0:
       obs0.bottom+=int(abs(obs0.bottom-pcu.top)/2)
     else:
-      obs0.bottom+=60
+      obs0.bottom+=30
     if obs0.top>=bg.get_rect().size[1]:
       obs0.bottom=0
       x_or_y=random.randint(0,7)
@@ -122,7 +122,7 @@ while running:
     if abs(obs1.right-pcu.left)>=2 and vl!=0:
       obs1.right+=int(abs(obs1.right-pcu.left)/2)
     else:
-      obs1.right+=60
+      obs1.right+=40
     if obs1.left>=bg.get_rect().size[0]:
       obs1.right=0
       x_or_y=random.randint(0,7)
