@@ -126,9 +126,9 @@ while running:
   if c2-c1>0.2:
     escc-=1
     c2=0
-    if escc<=0:
-      print("escaped!")
-      running=False
+  if escc<=0 and pcu.colliderect(esc1):
+    print("escaped!")
+    running=False
   # render screen
   pg.display.flip()
   print(c1,c2,cesc,escc,pg.mouse.get_pos())
