@@ -126,7 +126,7 @@ while running:
   if c2-c1>0.2:
     escc-=1
     c2=0
-    if escc<=1:
+    if escc<=0:
       print("escaped!")
       running=False
   # render screen
