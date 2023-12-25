@@ -58,6 +58,8 @@ if rc==1:
   # obstacle
   obs0=pg.Rect(bg.get_rect().w/2,0,bg.get_rect().w/48,bg.get_rect().h/6)
   obs0.bottom=0
+  obs1=pg.Rect(0,bg.get_rect().h/2,bg.get_rect().w/8,bg.get_rect().h/32)
+  obs1.right=0
   fast=0
   fct=0
   vl=0
@@ -71,6 +73,7 @@ if rc==1:
   escc=5
   cesc=0
   rc=0
+  x_or_y=random.randint(0,7)
 while running:
   if pg.event.get(pg.QUIT):
     running=False
@@ -97,21 +100,42 @@ while running:
     pg.draw.rect(screen,(0,0,0),pcu)
   screen.blit(piu,(pcu.left,pcu.top))
   # spawn obstacle 장애물(방해물) 생성
-  if abs(obs0.bottom-pcu.top)>=2 and vl!=0:
-    obs0.bottom+=int(abs(obs0.bottom-pcu.top)/2)
-  else:
-    obs0.bottom+=60
-  if obs0.top>=bg.get_rect().size[1]:
-    obs0.bottom=0
-    vl=random.randint(0,3)
-    if random.randint(0,9)<=3:
-      obs0.centerx=pcu.centerx
+  if x_or_y!=0:
+    if abs(obs0.bottom-pcu.top)>=2 and vl!=0:
+      obs0.bottom+=int(abs(obs0.bottom-pcu.top)/2)
     else:
-      obs0.centerx=(pcu.centerx+obs0.centerx)/random.randint(2,3)
-  pg.draw.rect(screen,(233,233,233),obs0)
-  if obs0.colliderect(pcu):
-    running=False
-    rc=0
+      obs0.bottom+=60
+    if obs0.top>=bg.get_rect().size[1]:
+      obs0.bottom=0
+      x_or_y=random.randint(0,7)
+      vl=random.randint(0,2)
+      if random.randint(0,9)<=3:
+        obs0.centerx=pcu.centerx
+      else:
+        obs0.centerx=(pcu.centerx+obs0.centerx)/random.randint(2,3)
+    pg.draw.rect(screen,(233,233,233),obs0)
+    if obs0.colliderect(pcu):
+      running=False
+      rc=0
+  else:
+  # spawn obstacle 장애물(방해물) 생성
+    if abs(obs1.right-pcu.left)>=2 and vl!=0:
+      obs1.right+=int(abs(obs1.right-pcu.left)/2)
+    else:
+      obs1.right+=60
+    if obs1.left>=bg.get_rect().size[0]:
+      obs1.right=0
+      x_or_y=random.randint(0,7)
+      vl=random.randint(0,3)
+      if random.randint(0,9)<=3:
+        obs1.centery=pcu.centery
+      else:
+        obs1.centery=(pcu.centery+obs1.centery)/random.randint(2,3)
+    pg.draw.rect(screen,(233,233,233),obs1)
+    if obs1.colliderect(pcu):
+      running=False
+      rc=0
+  # escape point 탈출구
   hb=0
   if hb==1:
     pg.draw.rect(screen,(0,0,0),esc1)
