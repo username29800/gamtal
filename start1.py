@@ -170,7 +170,7 @@ while running:
   pg.display.flip()
   print(c1,c2,cesc,escc,pg.mouse.get_pos())
 
-'''
+
 # stage 2
 if rc==1:
   running=True
@@ -179,4 +179,8 @@ if rc==1:
   bg=pg.transform.scale(bg,(1180,708))
   screen=pg.display.set_mode((1180,708))
   screen.blit(bg,(0,0))
-  '''
+  obs2=pg.Rect(1180/2,354/2,1180/4,1180/4)
+  obs2.centerx=random.randint(int(0+obs2.w/2),int(1180-obs2.w/2))
+  obs2l=[]
+  for i in range(0,2):
+    obs2l.append(obs2.copy)
