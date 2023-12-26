@@ -381,4 +381,25 @@ while running:
   for event in pg.event.get():
     if event.type == pg.QUIT:
       running = False
-'''font = '''
+  screen.blit(bg, (0, 0))
+  #이미지 전환
+  if tr[0] < 16:
+    tr[0] += 1
+  else:
+    if pcu == pcr0:
+      pcu = pcr
+      piu = pci
+      tr[0] = 0
+    elif pcu == pcr:
+      pcu = pcr0
+      piu = pci0
+      tr[0] = 0
+  pcu.centerx, pcu.centery = pg.mouse.get_pos()[0], pg.mouse.get_pos()[1]
+  hb = 0
+  if hb == 1:
+    pg.draw.rect(screen, (0, 0, 0), pcu)
+  screen.blit(piu, (pcu.left, pcu.top))
+'''font = pg.font.SysFont("arial", 30, True, True)
+   text = font.render("시간: " + str(int(time.time() - start)), True)
+   screen.blit(text, (30, 30))'''
+  pg.display.flip()
