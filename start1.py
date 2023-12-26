@@ -173,7 +173,7 @@ while running:
     rc = 1
   # render screen
   pg.display.flip()
-  print(c1, c2, cesc, escc, pg.mouse.get_pos())
+  #print(c1, c2, cesc, escc, pg.mouse.get_pos())
 
 # stage 2
 if rc == 1:
@@ -304,7 +304,7 @@ while running:
     rc = 1
     print("escaped!")
   pg.display.flip()
-  print(pg.mouse.get_pos())
+  #print(pg.mouse.get_pos())
 
 # stage 4
 if rc == 1:
@@ -358,7 +358,7 @@ while running:
   if door[1].right <= 562 - door[1].w * 2:
     spd = 10
   pg.display.flip()
-  print(pg.mouse.get_pos())
+  #print(pg.mouse.get_pos())
   if door[0].colliderect(pcu) or door[1].colliderect(pcu):
     running = False
     rc = 0
