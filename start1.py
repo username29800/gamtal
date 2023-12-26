@@ -352,9 +352,9 @@ while running:
     screen.blit(dri[door.index(i)], (i.left, i.top))
   door[0].left += spd
   door[1].right += spd
-  if door[0].left >= 562 + door[0].w:
+  if door[0].left >= 562 + door[0].w*2:
     spd = -10
-  if door[1].right <= 562 - door[1].w:
+  if door[1].right <= 562 - door[1].w*2:
     spd = 10
   pg.display.flip()
   print(pg.mouse.get_pos())
