@@ -295,3 +295,37 @@ while running:
     pg.draw.rect(screen, (0, 255, 0), i, 8)
   pg.display.flip()
   print(pg.mouse.get_pos())
+
+# stage 4
+if rc == 1:
+  running = True
+  rc = 0
+  pg.display.set_caption("STAGE 4")
+  bg = pg.image.load("./asset/bg/bg4.jpg")
+  bg = pg.transform.scale(bg, (1180, 708))
+  screen = pg.display.set_mode((1180, 708))
+  clock.tick(1024)
+while running:
+  for event in pg.event.get():
+    if event.type == pg.QUIT:
+      running = False
+  screen.blit(bg, (0, 0))
+  #이미지 전환
+  if tr[0] < 16:
+    tr[0] += 1
+  else:
+    if pcu == pcr0:
+      pcu = pcr
+      piu = pci
+      tr[0] = 0
+    elif pcu == pcr:
+      pcu = pcr0
+      piu = pci0
+      tr[0] = 0
+  pcu.centerx, pcu.centery = pg.mouse.get_pos()[0], pg.mouse.get_pos()[1]
+  hb = 0
+  if hb == 1:
+    pg.draw.rect(screen, (0, 0, 0), pcu)
+  screen.blit(piu, (pcu.left, pcu.top))
+  pg.display.flip()
+  print(pg.mouse.get_pos())
