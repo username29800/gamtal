@@ -179,29 +179,52 @@ if rc == 0:
   rc = 0
   pg.display.set_caption("STAGE 2")
   bg = pg.image.load("./asset/bg/bg2.jpg")
+  bg = pg.transform.rotate(bg, -90)
   bg = pg.transform.scale(bg, (1180, 708))
-  bg = pg.transform.rotate(bg, 90)
   #배경 회전한거 반영 안될 경우 한 번 써봐
   screen = pg.display.set_mode((1180, 708))
   screen.blit(bg, (0, 0))
-  obs2 = pg.Rect(0, 0, int(1180 / 3), int(708 / 3))
+  obs2 = pg.Rect(0, 0, int(1180 / 6), int(708 / 4))
   obs2.centerx = random.randint(int(obs2.w / 2), int(1180 - obs2.w / 2))
   obs2l = []
-  obs2y = [obs2.h / 2, 708 - obs2.h - 2]
-  obs2i = pg.image.load("./asset/entity/ent1.png")
+  obs2y = [obs2.h / 2, 708 - obs2.h / 2]
+  obs2y2 = [0, 708 - obs2.h]
+  obs2i = pg.transform.scale(pg.image.load("./asset/entity/ent1.png"),
+                             (int(1180 / 6), int(708 / 4)))
+  tr = [0, 0]
   for i in range(0, 3):
     obs2l.append(obs2.copy())  #0번은 x고정, 1,2는 y고정(+x방향 움직임)
   obs2l[0].centery = 1180 / 2
+  obs2l[0].right = 1180
 while running:
   for event in pg.event.get():
     if event.type == pg.QUIT:
       running = False
+  clock.tick(1024)
   screen.blit(bg, (0, 0))
   for i in obs2l[1:]:
     i.centerx = 1180 - i.w / 2
     i.centery = obs2y[obs2l.index(i) - 1]
-  x_obs2 = 1000
-  y_obs2 = 708 / 2  #위아래 움직이는 좌표 범위random.randint(101, 689)
-  screen.blit(obs2i, (1180 - obs2.w, 0))
+  #이미지 전환
+  if tr[0] < 4:
+    tr[0] += 1
+  else:
+    if pcu == pcr0:
+      pcu = pcr
+      piu = pci
+      tr[0] = 0
+    elif pcu == pcr:
+      pcu = pcr0
+      piu = pci0
+      tr[0] = 0
+  for i in obs2y2:
+    screen.blit(obs2i, (1180 - obs2.w, i))
+  if tr[1] < 32:
+    tr[1] += 1
+  else:
+    tr[1] = 0
+    obs2l[0].centery += (pg.mouse.get_pos()[1] - obs2l[0].centery) / 2
+  screen.blit(pg.transform.scale(obs2i, (obs2.w, obs2.h)),
+              (obs2l[0].left, obs2l[0].top))
   #pg.display.update()
   pg.display.flip()
