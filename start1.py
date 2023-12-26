@@ -257,9 +257,13 @@ if rc == 1:
   bg = pg.image.load("./asset/bg/bg3.png")
   bg = pg.transform.scale(bg, (1180, 708))
   screen = pg.display.set_mode((1180, 708))
-  pg.mouse.set_pos(2,1180/2)
+  pg.mouse.set_pos(2, 1180 / 2)
 while running:
+  for event in pg.event.get():
+    if event.type == pg.QUIT:
+      running = False
   screen.blit(bg, (0, 0))
+  clock.tick(1024)
   #이미지 전환
   if tr[0] < 16:
     tr[0] += 1
