@@ -222,12 +222,12 @@ while running:
   if hb == 1:
     pg.draw.rect(screen, (0, 0, 0), pcu)
   screen.blit(piu, (pcu.left, pcu.top))
-  if tr[2] < 8:
+  if tr[2] < 2:
     tr[2] += 1
   else:
     tr[2] = 0
     for i in obs2l[1:]:
-      i.left -= 40
+      i.left -= 10
       if i.left <= 0:
         i.left = 1180
   pg.draw.rect(screen, (255, 255, 255), obs2l[1])
@@ -239,7 +239,7 @@ while running:
     tr[1] += 1
   else:
     tr[1] = 0
-    obs2l[0].centery += (pg.mouse.get_pos()[1] - obs2l[0].centery) / 16
+    obs2l[0].centery += (pg.mouse.get_pos()[1] - obs2l[0].centery) / 24
 #  screen.blit(pg.transform.scale(obs2i, (obs2.w, obs2.h)),
 #              (obs2l[0].left, obs2l[0].top))
 #pg.display.update()
