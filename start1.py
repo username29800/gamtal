@@ -172,15 +172,24 @@ while running:
 
 
 # stage 2
-if rc==1:
+if rc==0:
   running=True
+  rc=0
   pg.display.set_caption("STAGE 2")
-  bg=pg.image.load("./asset/bg/bg2.png")
+  bg=pg.image.load("./asset/bg/bg2.jpg")
   bg=pg.transform.scale(bg,(1180,708))
   screen=pg.display.set_mode((1180,708))
   screen.blit(bg,(0,0))
   obs2=pg.Rect(1180/2,354/2,1180/4,1180/4)
   obs2.centerx=random.randint(int(0+obs2.w/2),int(1180-obs2.w/2))
   obs2l=[]
-  for i in range(0,2):
-    obs2l.append(obs2.copy)
+  for i in range(0,3):
+    obs2l.append(obs2.copy) #0번은 x고정, 1,2는 y고정(+x방향 움직임)
+while running:
+  for event in pg.event.get():
+    if event.type==pg.QUIT:
+      running=False
+  screen.blit(bg,(0,0))
+  x_obs2 = 1000
+  y_obs2 = random.randint()
+  pg.display.flip()
