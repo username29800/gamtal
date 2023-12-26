@@ -250,7 +250,7 @@ while running:
     running = False
     rc = 1
     print("escaped!")
-  if pg.mouse.get_pos()[0]>=1179
+  if pg.mouse.get_pos()[0]>=1179:
     pg.mouse.set_pos(1178,pg.mouse.get_pos()[1])
   pg.display.flip()
 # stage 3
