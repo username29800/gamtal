@@ -206,7 +206,7 @@ while running:
   clock.tick(1024)
   screen.blit(bg, (0, 0))
   #이미지 전환
-  if tr[0] < 4:
+  if tr[0] < 16:
     tr[0] += 1
   else:
     if pcu == pcr0:
@@ -232,6 +232,7 @@ while running:
         i.left = 1180
   for i in obs2l:
     screen.blit(pg.transform.scale(obs2i, (i.w, i.h)), (i.left, i.top))
+    pg.draw.rect(screen, (255, 0, 0), i, 8)
 #  for i in obs2y2:
 #    screen.blit(obs2i, (1180 - obs2.w, i))
   if tr[1] < 8:
@@ -261,4 +262,5 @@ if rc == 1:
   bg = pg.transform.scale(bg, (1180, 708))
   screen = pg.display.set_mode((1180, 708))
   screen.blit(bg, (0, 0))
+  
   '''
