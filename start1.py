@@ -219,11 +219,11 @@ while running:
       tr[0] = 0
   for i in obs2y2:
     screen.blit(obs2i, (1180 - obs2.w, i))
-  if tr[1] < 32:
+  if tr[1] < 8:
     tr[1] += 1
   else:
     tr[1] = 0
-    obs2l[0].centery += (pg.mouse.get_pos()[1] - obs2l[0].centery) / 2
+    obs2l[0].centery += (pg.mouse.get_pos()[1] - obs2l[0].centery) / 8
   screen.blit(pg.transform.scale(obs2i, (obs2.w, obs2.h)),
               (obs2l[0].left, obs2l[0].top))
   #pg.display.update()
