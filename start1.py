@@ -258,7 +258,7 @@ if rc == 1:
   pg.display.set_caption("STAGE 3")
   pg.time.wait(100)
   pg.mouse.set_pos(2,590)
-    pg.time.wait(100)
+  pg.time.wait(100)
   bg = pg.image.load("./asset/bg/bg3.png")
   bg = pg.transform.scale(bg, (1180, 708))
   screen = pg.display.set_mode((1180, 708))
