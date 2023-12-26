@@ -249,14 +249,33 @@ while running:
     rc = 1
     print("escaped!")
   pg.display.flip()
-'''# stage 3
+# stage 3
 if rc == 1:
   running = True
   rc = 0
   pg.display.set_caption("STAGE 3")
-  bg = pg.image.load("./asset/bg/bg3.jpg")
+  bg = pg.image.load("./asset/bg/bg3.png")
   bg = pg.transform.scale(bg, (1180, 708))
   screen = pg.display.set_mode((1180, 708))
+  pg.mouse.set_pos(2,1180/2)
+while running:
   screen.blit(bg, (0, 0))
-  
-  '''
+  #이미지 전환
+  if tr[0] < 16:
+    tr[0] += 1
+  else:
+    if pcu == pcr0:
+      pcu = pcr
+      piu = pci
+      tr[0] = 0
+    elif pcu == pcr:
+      pcu = pcr0
+      piu = pci0
+      tr[0] = 0
+  pcu.centerx, pcu.centery = pg.mouse.get_pos()[0], pg.mouse.get_pos()[1]
+  hb = 0
+  if hb == 1:
+    pg.draw.rect(screen, (0, 0, 0), pcu)
+  screen.blit(piu, (pcu.left, pcu.top))
+  pg.display.flip()
+  print(pg.mouse.get_pos())
