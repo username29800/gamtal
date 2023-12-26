@@ -352,12 +352,12 @@ while running:
     screen.blit(dri[door.index(i)], (i.left, i.top))
   door[0].left += spd
   door[1].right += spd
-  if door[0].left >= 562 + door[0].w and spd == 10:
+  if door[0].left >= 562 + door[0].w:
     spd = -10
-  elif door[1].right <= 562 - door[1].w and spd == -10:
+  if door[1].right <= 562 - door[1].w:
     spd = 10
   pg.display.flip()
   print(pg.mouse.get_pos())
 
 #끝부분 시간 측정
-print(time.time() - start) # 총 시간 출력
+print(time.time() - start)  # 총 시간 출력
