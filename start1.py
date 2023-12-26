@@ -199,7 +199,7 @@ if rc == 1:
   for i in obs2l[1:]:
     i.centerx = 1180 - i.w / 2
     i.centery = obs2y[obs2l.index(i) - 1]
-  pg.mouse.set_pos(2,1180/2)
+  pg.mouse.set_pos(2, 1180 / 2)
 while running:
   for event in pg.event.get():
     if event.type == pg.QUIT:
@@ -238,7 +238,7 @@ while running:
     tr[1] += 1
   else:
     tr[1] = 0
-    obs2l[0].centery += (pg.mouse.get_pos()[1] - obs2l[0].centery) / 24
+    obs2l[0].centery += (pg.mouse.get_pos()[1] - obs2l[0].centery) / 16
 # 충돌판정
   for i in obs2l:
     if pcu.colliderect(i):
