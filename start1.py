@@ -254,6 +254,7 @@ if rc == 1:
   running = True
   rc = 0
   pg.display.set_caption("STAGE 3")
+  screen.fill("black")
   bg = pg.image.load("./asset/bg/bg3.png")
   bg = pg.transform.scale(bg, (1180, 708))
   screen = pg.display.set_mode((1180, 708))
@@ -266,7 +267,7 @@ if rc == 1:
   obs3l1 = []
   for i in obs3l:
     obs3l1.append(pg.Rect(i))
-  obs3l=obs3l1
+  obs3l = obs3l1
 while running:
   for event in pg.event.get():
     if event.type == pg.QUIT:
@@ -291,6 +292,6 @@ while running:
     pg.draw.rect(screen, (0, 0, 0), pcu)
   screen.blit(piu, (pcu.left, pcu.top))
   for i in obs3l:
-  pg.draw.rect(screen, (0, 255, 0), i, 8)
+    pg.draw.rect(screen, (0, 255, 0), i, 8)
   pg.display.flip()
   print(pg.mouse.get_pos())
