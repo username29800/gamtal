@@ -325,7 +325,7 @@ if rc == 1:
   door[1].left -= 734 - 562
   door[1].right = 562
   spd = 20
-  ca=pg.Rect(388,225,714-388,507-225)
+  ca = pg.Rect(388, 225, 714 - 388, 507 - 225)
 while running:
   for event in pg.event.get():
     if event.type == pg.QUIT:
@@ -367,12 +367,13 @@ while running:
     rc = 1
     print("escaped!")
 #stage clear
-if rc == 0:
+if rc == 1:
   running = True
-  rc=0
+  rc = 0
   print("야자를 무사히 탈출했습니다!")
-  print(str(int(time.time() - start))+"초가 걸렸습니다!")  # 총 시간 출력
-  pg.display.set_caption("야자를 무사히 탈출했습니다!"+str(int(time.time() - start))+"초가 걸렸습니다!")
+  print(str(int(time.time() - start)) + "초가 걸렸습니다!")  # 총 시간 출력
+  pg.display.set_caption("야자를 무사히 탈출했습니다!" + str(int(time.time() - start)) +
+                         "초가 걸렸습니다!")
   bg = pg.image.load("./asset/bg/bg5.jpg")
   bg = pg.transform.scale(bg, (1180, 708))
   screen = pg.display.set_mode((1180, 708))
