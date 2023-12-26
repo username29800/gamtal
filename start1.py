@@ -242,11 +242,15 @@ while running:
 #  screen.blit(pg.transform.scale(obs2i, (obs2.w, obs2.h)),
 #              (obs2l[0].left, obs2l[0].top))
 #pg.display.update()
-  # 충돌판정
+# 충돌판정
   for i in obs2l:
     if pcu.colliderect(i):
       running = False
       rc = 0
+  if pcu.centerx == 1180:
+    running = False
+    rc = 1
+    print("escaped!")
   pg.display.flip()
 '''# stage 3
 if rc == 1:
