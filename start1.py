@@ -194,6 +194,6 @@ while running:
   screen.blit(bg,(0,0))
   x_obs2 = 1000
   y_obs2 = random.randint(101, 689)
-  screen.blit(obs2l[0], (x_obs2, y_obs2))
+  screen.blit(pg.image.load("./asset/entity/ent1.png"), (x_obs2, y_obs2))
   #pg.display.update()
   pg.display.flip()
