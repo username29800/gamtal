@@ -254,11 +254,10 @@ if rc == 1:
   running = True
   rc = 0
   pg.display.set_caption("STAGE 3")
-  screen.fill("black")
+  pg.mouse.set_pos(2, 1180 / 2)
   bg = pg.image.load("./asset/bg/bg3.png")
   bg = pg.transform.scale(bg, (1180, 708))
   screen = pg.display.set_mode((1180, 708))
-  pg.mouse.set_pos(2, 1180 / 2)
   obs3l = [(141, 266, 195 - 141, 289 - 266), (239, 433, 287 - 239, 474 - 433),
            (319, 109, 354 - 319, 209 - 138), (493, 549, 543 - 493, 579 - 529),
            (585, 78, 633 - 585, 110 - 78), (672, 404, 739 - 672, 404 - 350),
@@ -268,7 +267,6 @@ if rc == 1:
   for i in obs3l:
     obs3l1.append(pg.Rect(i))
   obs3l = obs3l1
-  pg.mouse.set_pos(2, 1180 / 2)
 while running:
   for event in pg.event.get():
     if event.type == pg.QUIT:
@@ -314,7 +312,8 @@ if rc == 1:
   screen = pg.display.set_mode((1180, 708))
   clock.tick(1024)
   door = [pg.Rect(562, 226, 734 - 562, 505 - 226)]
-  door.append(pg.transform.flip(door[0].copy(),False,True))
+  door.append(door[0].copy())
+  door[1]=pg.transform.flip(door[1],True,False)
   dri = pg.transform.scale(pg.image.load("./asset/entity/door1.png"),
                            (door[0].w, door[0].h))
   door[1].left -= 734 - 562
