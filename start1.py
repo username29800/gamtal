@@ -374,10 +374,11 @@ if rc == 1:
   print(str(int(time.time() - start)) + "초가 걸렸습니다!")  # 총 시간 출력
   pg.display.set_caption("야자를 무사히 탈출했습니다!" + str(int(time.time() - start)) +
                          "초가 걸렸습니다!")
-  bg = pg.image.load("./asset/bg/bg5.jpg")
+  bg = pg.image.load("./asset/bg/bg5.png")
   bg = pg.transform.scale(bg, (1180, 708))
   screen = pg.display.set_mode((1180, 708))
 while running:
   for event in pg.event.get():
     if event.type == pg.QUIT:
       running = False
+'''font = '''
