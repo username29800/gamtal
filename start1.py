@@ -302,7 +302,7 @@ while running:
     if i.colliderect(pcu):
       running = False
       rc = 0
-  if pcu.centerx >= 1178 and time.time() - c3 >= 2:
+  if pcu.centerx >= 1178 and time.time() - c3 >= 1:
     running = False
     rc = 1
     print("escaped!")
