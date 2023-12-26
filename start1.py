@@ -258,6 +258,15 @@ if rc == 1:
   bg = pg.transform.scale(bg, (1180, 708))
   screen = pg.display.set_mode((1180, 708))
   pg.mouse.set_pos(2, 1180 / 2)
+  obs3l = [(141, 266, 195 - 141, 289 - 266), (239, 433, 287 - 239, 474 - 433),
+           (319, 109, 354 - 319, 138 - 209), (493, 549, 543 - 493, 579 - 549),
+           (585, 78, 633 - 585, 110 - 78), (672, 404, 739 - 672, 404 - 270),
+           (947, 520, 1000 - 947, 557 - 520),
+           (1004, 259, 1060 - 1004, 291 - 259)]
+  obs3l1 = []
+  for i in obs3l:
+    obs3l1.append(pg.Rect(i))
+  obs3l=obs3l1
 while running:
   for event in pg.event.get():
     if event.type == pg.QUIT:
@@ -281,5 +290,7 @@ while running:
   if hb == 1:
     pg.draw.rect(screen, (0, 0, 0), pcu)
   screen.blit(piu, (pcu.left, pcu.top))
+  for i in obs3l:
+  pg.draw.rect(screen, (0, 255, 0), i, 8)
   pg.display.flip()
   print(pg.mouse.get_pos())
