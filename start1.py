@@ -191,20 +191,20 @@ if rc == 0:
   obs2y2 = [0, 708 - obs2.h]
   obs2i = pg.transform.scale(pg.image.load("./asset/entity/ent1.png"),
                              (int(1180 / 6), int(708 / 4)))
-  tr = [0, 0]
+  tr = [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0]
   for i in range(0, 3):
     obs2l.append(obs2.copy())  #0번은 x고정, 1,2는 y고정(+x방향 움직임)
   obs2l[0].centery = 1180 / 2
   obs2l[0].right = 1180
+  for i in obs2l[1:]:
+    i.centerx = 1180 - i.w / 2
+    i.centery = obs2y[obs2l.index(i) - 1]
 while running:
   for event in pg.event.get():
     if event.type == pg.QUIT:
       running = False
   clock.tick(1024)
   screen.blit(bg, (0, 0))
-  for i in obs2l[1:]:
-    i.centerx = 1180 - i.w / 2
-    i.centery = obs2y[obs2l.index(i) - 1]
   #이미지 전환
   if tr[0] < 4:
     tr[0] += 1
@@ -217,14 +217,40 @@ while running:
       pcu = pcr0
       piu = pci0
       tr[0] = 0
-  for i in obs2y2:
-    screen.blit(obs2i, (1180 - obs2.w, i))
+  pcu.centerx, pcu.centery = pg.mouse.get_pos()[0], pg.mouse.get_pos()[1]
+  hb = 0
+  if hb == 1:
+    pg.draw.rect(screen, (0, 0, 0), pcu)
+  screen.blit(piu, (pcu.left, pcu.top))
+  if tr[2] < 8:
+    tr[2] += 1
+  else:
+    tr[2] = 0
+    for i in obs2l[1:]:
+      i.left -= 40
+      if i.left <= 0:
+        i.left = 1180
+  pg.draw.rect(screen, (255, 255, 255), obs2l[1])
+  for i in obs2l:
+    screen.blit(pg.transform.scale(obs2i, (i.w, i.h)), (i.left, i.top))
+#  for i in obs2y2:
+#    screen.blit(obs2i, (1180 - obs2.w, i))
   if tr[1] < 8:
     tr[1] += 1
   else:
     tr[1] = 0
-    obs2l[0].centery += (pg.mouse.get_pos()[1] - obs2l[0].centery) / 8
-  screen.blit(pg.transform.scale(obs2i, (obs2.w, obs2.h)),
-              (obs2l[0].left, obs2l[0].top))
-  #pg.display.update()
+    obs2l[0].centery += (pg.mouse.get_pos()[1] - obs2l[0].centery) / 16
+#  screen.blit(pg.transform.scale(obs2i, (obs2.w, obs2.h)),
+#              (obs2l[0].left, obs2l[0].top))
+#pg.display.update()
   pg.display.flip()
+'''# stage 3
+if rc == 1:
+  running = True
+  rc = 0
+  pg.display.set_caption("STAGE 3")
+  bg = pg.image.load("./asset/bg/bg3.jpg")
+  bg = pg.transform.scale(bg, (1180, 708))
+  screen = pg.display.set_mode((1180, 708))
+  screen.blit(bg, (0, 0))
+  '''
