@@ -312,9 +312,9 @@ if rc == 1:
   bg = pg.transform.scale(bg, (1180, 708))
   screen = pg.display.set_mode((1180, 708))
   clock.tick(1024)
-  dri = pg.image.load("./asset/entity/door1.png")
   door = [pg.Rect(562, 226, 734 - 562, 505 - 226)]
   door.append(door[0].copy())
+  dri = pg.transform.scale(pg.image.load("./asset/entity/door1.png"),(door[0].w,door[0].h))
   door[1].left -= 734 - 562
 while running:
   for event in pg.event.get():
