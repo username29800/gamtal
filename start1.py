@@ -313,9 +313,11 @@ if rc == 1:
   clock.tick(1024)
   door = [pg.Rect(562, 226, 734 - 562, 505 - 226)]
   door.append(door[0].copy())
-  door[1]=pg.transform.flip(door[1],True,False)
-  dri = pg.transform.scale(pg.image.load("./asset/entity/door1.png"),
-                           (door[0].w, door[0].h))
+  dri = [
+      pg.transform.scale(pg.image.load("./asset/entity/door1.png"),
+                         (door[0].w, door[0].h))
+  ]
+  dri.append(pg.transform.flip(dri[0], False, True))
   door[1].left -= 734 - 562
 while running:
   for event in pg.event.get():
@@ -340,7 +342,7 @@ while running:
     pg.draw.rect(screen, (0, 0, 0), pcu)
   screen.blit(piu, (pcu.left, pcu.top))
   for i in door:
-    screen.blit(dri, (i.left, i.top))
+    screen.blit(dri[door.index(i)], (i.left, i.top))
   pg.display.flip()
   print(pg.mouse.get_pos())
 #562
