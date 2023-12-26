@@ -174,7 +174,7 @@ while running:
   print(c1, c2, cesc, escc, pg.mouse.get_pos())
 
 # stage 2
-if rc == 0:
+if rc == 1:
   running = True
   rc = 0
   pg.display.set_caption("STAGE 2")
@@ -233,16 +233,11 @@ while running:
   for i in obs2l:
     screen.blit(pg.transform.scale(obs2i, (i.w, i.h)), (i.left, i.top))
     pg.draw.rect(screen, (255, 0, 0), i, 8)
-#  for i in obs2y2:
-#    screen.blit(obs2i, (1180 - obs2.w, i))
   if tr[1] < 8:
     tr[1] += 1
   else:
     tr[1] = 0
     obs2l[0].centery += (pg.mouse.get_pos()[1] - obs2l[0].centery) / 24
-#  screen.blit(pg.transform.scale(obs2i, (obs2.w, obs2.h)),
-#              (obs2l[0].left, obs2l[0].top))
-#pg.display.update()
 # 충돌판정
   for i in obs2l:
     if pcu.colliderect(i):
