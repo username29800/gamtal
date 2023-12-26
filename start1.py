@@ -320,6 +320,7 @@ if rc == 1:
   ]
   dri.append(pg.transform.flip(dri[0], False, True))
   door[1].left -= 734 - 562
+  door[1].right=562
 while running:
   for event in pg.event.get():
     if event.type == pg.QUIT:
