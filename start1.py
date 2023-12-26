@@ -81,7 +81,7 @@ if rc == 1:
   esc1 = pg.Rect(1025, 250, 75, 75)
   nesc1 = pg.Rect(0, 0, 950, 700)
   c1, c2, cesc, rc = 0, 0, 0, 0
-  escc = 3
+  escc = 2
   x_or_y = random.randint(0, 7)
 while running:
   if pg.event.get(pg.QUIT):
@@ -161,7 +161,7 @@ while running:
     c2 = time.time()
     cesc = 0
   if pcu.colliderect(nesc1):
-    escc = 5
+    escc = 2
   if c2 - c1 > 0.2:
     escc -= 1
     c2 = 0
@@ -256,6 +256,7 @@ if rc == 1:
   pg.display.set_caption("STAGE 3")
   for i in range(0, 3):
     pg.mouse.set_pos(2, 1180 / 2)
+    pg.time.wait(100)
   bg = pg.image.load("./asset/bg/bg3.png")
   bg = pg.transform.scale(bg, (1180, 708))
   screen = pg.display.set_mode((1180, 708))
@@ -355,3 +356,5 @@ while running:
     spd = 10
   pg.display.flip()
   print(pg.mouse.get_pos())
+
+#
