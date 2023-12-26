@@ -342,7 +342,7 @@ while running:
     pg.draw.rect(screen, (0, 0, 0), pcu)
   screen.blit(piu, (pcu.left, pcu.top))
   for i in door:
-    screen.blit(dri[door.index(i)], (i.left, i.top))
+    screen.blit(dri[door.index(1-i)], (i.left, i.top))
   pg.display.flip()
   print(pg.mouse.get_pos())
 #562
