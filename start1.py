@@ -312,6 +312,10 @@ if rc == 1:
   bg = pg.transform.scale(bg, (1180, 708))
   screen = pg.display.set_mode((1180, 708))
   clock.tick(1024)
+  dri = pg.image.load("./asset/entity/door1.png")
+  door = [pg.Rect(562, 226, 734 - 562, 505 - 226)]
+  door.append(door[0].copy())
+  door[1].left -= 734 - 562
 while running:
   for event in pg.event.get():
     if event.type == pg.QUIT:
@@ -334,5 +338,8 @@ while running:
   if hb == 1:
     pg.draw.rect(screen, (0, 0, 0), pcu)
   screen.blit(piu, (pcu.left, pcu.top))
+  for i in door:
+    screen.blit(dri, (i.left, i.top))
   pg.display.flip()
   print(pg.mouse.get_pos())
+#562
