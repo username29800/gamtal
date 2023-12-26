@@ -178,6 +178,8 @@ if rc==0:
   pg.display.set_caption("STAGE 2")
   bg=pg.image.load("./asset/bg/bg2.jpg")
   bg=pg.transform.scale(bg,(1180,708))
+  #bg = pg.transform.rotate(bg, 90)
+  #배경 회전한거 반영 안될 경우 한 번 써봐
   screen=pg.display.set_mode((1180,708))
   screen.blit(bg,(0,0))
   obs2=pg.Rect(1180/2,354/2,1180/4,1180/4)
@@ -191,5 +193,7 @@ while running:
       running=False
   screen.blit(bg,(0,0))
   x_obs2 = 1000
-  y_obs2 = random.randint()
+  y_obs2 = random.randint(101, 689)
+  screen.blit(obs2l[0], (x_obs2, y_obs2))
+  #pg.display.update()
   pg.display.flip()
