@@ -1,0 +1,61 @@
+==this is a documentation about variables used==
+
+sti: This variable holds the background image loaded from "./asset/bg/back.png".
+screen: This is the surface where you draw your game. It's initialized with the size of the sti image.
+clock: Used to control the frame rate of the game.
+running: A boolean variable that controls whether the game loop should continue running.
+sto: The image of the cursor for the start button.
+stc: The rectangle representing the start button's position and size.
+stbtn: A rectangle representing the clickable area for starting the game.
+pg.mouse.set_cursor(pg.cursors.diamond): Sets the mouse cursor to a diamond shape.
+tr and rc: These are tick regulators and a flag used to control game state transitions.
+The code enters a loop where it checks for quit events and processes mouse input for starting the game. If the start button is clicked, the game enters another loop for the main game.
+
+bg: The background image for the main game (stage 1).
+pci0 and pci: Images for the player character.
+pcr0 and pcr: Rectangles representing the player character's position and size.
+obs0 and obs1: Rectangles representing the position of two types of obstacles.
+ci1, ci2, ci3, ci4, ci5, ci6: Images for different types of obstacles.
+cil: A list containing the obstacle images.
+ci0: The current obstacle image in use.
+x_or_y: A random variable determining whether obstacles move horizontally or vertically.
+tr: A tick regulator for animation.
+fast and fct: Variables related to obstacle speed.
+vl: A variable to control obstacle movement.
+esc1: Rectangle representing the escape point.
+nesc1: Rectangle representing the non-escape point.
+c1, c2: Time variables for measuring the time spent on the escape point.
+escc and cesc: Variables controlling the escape countdown and escape cooldown.
+rc: A flag to determine if the game ended successfully or not.
+x_or_y: Random variable to determine the initial movement direction of the obstacles.
+The main game loop handles events, updates the player and obstacle positions, checks for collisions, and updates the display. It also prints some debug information. The game loop continues until the player either quits or successfully escapes.
+
+sti: "./asset/bg/back.png"에서 로드한 배경 이미지를 저장하는 변수입니다.
+screen: 게임을 그릴 표면(surface)입니다. sti 이미지의 크기로 초기화됩니다.
+clock: 게임의 프레임 속도를 제어하는 데 사용됩니다.
+running: 게임 루프가 계속 실행되어야 하는지를 제어하는 부울 변수입니다.
+sto: 시작 버튼에 대한 커서 이미지입니다.
+stc: 시작 버튼의 위치와 크기를 나타내는 직사각형입니다.
+stbtn: 게임을 시작하는 데 사용되는 클릭 가능한 영역을 나타내는 직사각형입니다.
+pg.mouse.set_cursor(pg.cursors.diamond): 마우스 커서를 다이아몬드 모양으로 설정합니다.
+tr와 rc: 이것들은 틱 레귤레이터(tick regulator) 및 게임 상태 전환을 제어하는 플래그입니다.
+코드는 종료 이벤트를 확인하고 게임 시작을 위한 마우스 입력을 처리하는 루프에 진입합니다. 시작 버튼이 클릭되면 게임은 본격적인 게임을 위한 또 다른 루프로 들어갑니다.
+
+
+bg: 본격적인 게임의 배경 이미지(스테이지 1)입니다.
+pci0와 pci: 플레이어 캐릭터의 이미지입니다.
+pcr0와 pcr: 플레이어 캐릭터의 위치와 크기를 나타내는 직사각형입니다.
+obs0와 obs1: 두 종류의 장애물의 위치를 나타내는 직사각형입니다.
+ci1, ci2, ci3, ci4, ci5, ci6: 다양한 종류의 장애물 이미지입니다.
+cil: 장애물 이미지들을 포함하는 리스트입니다.
+ci0: 현재 사용 중인 장애물 이미지입니다.
+x_or_y: 장애물이 수평으로 움직일지 수직으로 움직일지를 결정하는 무작위 변수입니다.
+tr: 애니메이션에 대한 틱 레귤레이터입니다.
+fast와 fct: 장애물 속도와 관련된 변수들입니다.
+vl: 장애물의 움직임을 제어하는 변수입니다.
+esc1: 탈출 지점을 나타내는 직사각형입니다.
+nesc1: 비탈출 지점을 나타내는 직사각형입니다.
+c1, c2: 탈출 지점에서 소요된 시간을 측정하는 시간 변수들입니다.
+escc와 cesc: 탈출 카운트다운과 탈출 쿨다운을 제어하는 변수들입니다.
+rc: 게임이 성공적으로 종료되었는지 여부를 나타내는 플래그입니다.
+x_or_y: 장애물의 초기 이동 방향을 결정하는 무작위 변수입니다.

@@ -40,9 +40,9 @@ while running:
 if rc==1:
   running=True
   pg.display.set_caption("STAGE 1")
-  bg=pg.image.load("./asset/bg/stg1bg.png")
-  bg=pg.transform.scale(bg,(bg.get_rect().w*2.5,bg.get_rect().h*1.5))
-  screen=pg.display.set_mode(bg.get_rect().size)
+  bg=pg.image.load("./asset/bg/bg1.png")
+  bg=pg.transform.scale(bg,(1180,708))
+  screen=pg.display.set_mode((1180,708))
   screen.blit(bg,(0,0))
   pg.mouse.set_visible(False)
   tr=0
@@ -56,10 +56,21 @@ if rc==1:
   pcu=pcr0
   piu=pci0
   # obstacle
-  obs0=pg.Rect(bg.get_rect().w/2,0,bg.get_rect().w/48,bg.get_rect().h/6)
+  ci1=pg.image.load("./asset/entity/chalk1.png")
+  ci2=pg.image.load("./asset/entity/chalk2.png")
+  ci3=pg.image.load("./asset/entity/chalk3.png")
+  ci1=pg.transform.scale(ci1,(ci1.get_rect().w/4,ci1.get_rect().h/4))
+  ci2=pg.transform.scale(ci2,(ci1.get_rect().w,ci1.get_rect().h))
+  ci3=pg.transform.scale(ci3,(ci1.get_rect().w,ci1.get_rect().h))
+  ci4=pg.transform.rotate(ci1,90)
+  ci5=pg.transform.rotate(ci2,90)
+  ci6=pg.transform.rotate(ci3,90)
+  obs0=pg.Rect(bg.get_rect().w/2,0,ci4.get_rect().w,ci4.get_rect().h)
   obs0.bottom=0
-  obs1=pg.Rect(0,bg.get_rect().h/2,bg.get_rect().w/8,bg.get_rect().h/32)
+  obs1=pg.Rect(0,bg.get_rect().h/2,ci1.get_rect().w,ci1.get_rect().h)
   obs1.right=0
+  cil=[ci1,ci2,ci3,ci4,ci5,ci6]
+  ci0=ci1
   fast=0
   fct=0
   vl=0
@@ -101,6 +112,8 @@ while running:
   screen.blit(piu,(pcu.left,pcu.top))
   # spawn obstacle 장애물(방해물) 생성
   if x_or_y!=0:
+    if cil.index(ci0)<=2:
+      ci0=cil[random.randint(3,5)]
     if abs(obs0.bottom-pcu.top)>=2 and vl!=0:
       obs0.bottom+=int(abs(obs0.bottom-pcu.top)/2)
     else:
@@ -113,12 +126,15 @@ while running:
         obs0.centerx=pcu.centerx
       else:
         obs0.centerx=(pcu.centerx+obs0.centerx)/random.randint(2,3)
-    pg.draw.rect(screen,(233,233,233),obs0)
+    #pg.draw.rect(screen,(233,233,233),obs0)
+    screen.blit(ci0,(obs0.left,obs0.top))
     if obs0.colliderect(pcu):
       running=False
       rc=0
   else:
   # spawn obstacle 장애물(방해물) 생성
+    if cil.index(ci0)>=3:
+      ci0=cil[random.randint(0,2)]
     if abs(obs1.right-pcu.left)>=2 and vl!=0:
       obs1.right+=int(abs(obs1.right-pcu.left)/2)
     else:
@@ -131,7 +147,8 @@ while running:
         obs1.centery=pcu.centery
       else:
         obs1.centery=(pcu.centery+obs1.centery)/random.randint(2,3)
-    pg.draw.rect(screen,(233,233,233),obs1)
+    #pg.draw.rect(screen,(233,233,233),obs1)
+    screen.blit(ci0,(obs1.left,obs1.top))
     if obs1.colliderect(pcu):
       running=False
       rc=0
@@ -153,6 +170,8 @@ while running:
   if escc<=1 and pcu.colliderect(esc1):
     print("escaped!")
     running=False
+    rc=1
   # render screen
   pg.display.flip()
-  print(c1,c2,cesc,escc,pg.mouse.get_pos())
+  print(c1,c2,cesc,escc,pg.mouse.get_pos(),bg.get_rect().w,bg.get_rect().h)
+  
