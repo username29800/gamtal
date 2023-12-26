@@ -230,7 +230,6 @@ while running:
       i.left -= 10
       if i.left <= 0:
         i.left = 1180
-  pg.draw.rect(screen, (255, 255, 255), obs2l[1])
   for i in obs2l:
     screen.blit(pg.transform.scale(obs2i, (i.w, i.h)), (i.left, i.top))
 #  for i in obs2y2:
@@ -243,6 +242,11 @@ while running:
 #  screen.blit(pg.transform.scale(obs2i, (obs2.w, obs2.h)),
 #              (obs2l[0].left, obs2l[0].top))
 #pg.display.update()
+  # 충돌판정
+  for i in obs2l:
+    if pcu.colliderect(i):
+      running = False
+      rc = 0
   pg.display.flip()
 '''# stage 3
 if rc == 1:
