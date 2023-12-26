@@ -273,6 +273,7 @@ if rc == 1:
   for i in obs3l:
     obs3l1.append(pg.Rect(i))
   obs3l = obs3l1
+  c3=time.time()
 while running:
   for event in pg.event.get():
     if event.type == pg.QUIT:
@@ -301,7 +302,7 @@ while running:
     if i.colliderect(pcu):
       running = False
       rc = 0
-  if pcu.centerx >= 1178:
+  if pcu.centerx >= 1178 and time.time()-c3>=2:
     running = False
     rc = 1
     print("escaped!")
