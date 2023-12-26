@@ -1,6 +1,7 @@
 import pygame as pg
 import random,time
 pg.init()
+pg.display.set_caption("야, 너두 탈출할수 있어")
 #background image
 sti=pg.image.load("./asset/bg/back.png")
 #screen Surface init
@@ -66,24 +67,18 @@ if rc==1:
   ci5=pg.transform.rotate(ci2,90)
   ci6=pg.transform.rotate(ci3,90)
   obs0=pg.Rect(bg.get_rect().w/2,0,ci4.get_rect().w,ci4.get_rect().h)
-  obs0.bottom=0
   obs1=pg.Rect(0,bg.get_rect().h/2,ci1.get_rect().w,ci1.get_rect().h)
-  obs1.right=0
+  obs0.bottom,obs1.right=0,0
   cil=[ci1,ci2,ci3,ci4,ci5,ci6]
   ci0=ci1
-  fast=0
-  fct=0
-  vl=0
+  fast,fct,vl=0,0,0
   # escape
   #1025,336
   #1050,360
   esc1=pg.Rect(1025,250,75,75)
   nesc1=pg.Rect(0,0,950,700)
-  c1=0
-  c2=0
+  c1,c2,cesc,rc=0,0,0,0
   escc=5
-  cesc=0
-  rc=0
   x_or_y=random.randint(0,7)
 while running:
   if pg.event.get(pg.QUIT):
@@ -173,5 +168,15 @@ while running:
     rc=1
   # render screen
   pg.display.flip()
-  print(c1,c2,cesc,escc,pg.mouse.get_pos(),bg.get_rect().w,bg.get_rect().h)
-  
+  print(c1,c2,cesc,escc,pg.mouse.get_pos())
+
+'''
+# stage 2
+if rc==1:
+  running=True
+  pg.display.set_caption("STAGE 2")
+  bg=pg.image.load("./asset/bg/bg2.png")
+  bg=pg.transform.scale(bg,(1180,708))
+  screen=pg.display.set_mode((1180,708))
+  screen.blit(bg,(0,0))
+  '''
