@@ -199,6 +199,7 @@ if rc == 1:
   for i in obs2l[1:]:
     i.centerx = 1180 - i.w / 2
     i.centery = obs2y[obs2l.index(i) - 1]
+  pg.mouse.set_pos(2,1180/2)
 while running:
   for event in pg.event.get():
     if event.type == pg.QUIT:
