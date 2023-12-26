@@ -81,7 +81,7 @@ if rc == 1:
   esc1 = pg.Rect(1025, 250, 75, 75)
   nesc1 = pg.Rect(0, 0, 950, 700)
   c1, c2, cesc, rc = 0, 0, 0, 0
-  escc = 5
+  escc = 3
   x_or_y = random.randint(0, 7)
 while running:
   if pg.event.get(pg.QUIT):
@@ -350,8 +350,8 @@ while running:
   door[0].left += spd
   door[1].right += spd
   if door[0].left >= 562 + door[0].w and spd == 20:
-    spd = -20
-  elif door[1].right<=562-door[1].w and spd == -20:
-    spd = 20
+    spd = -10
+  elif door[1].right <= 562 - door[1].w and spd == -20:
+    spd = 10
   pg.display.flip()
   print(pg.mouse.get_pos())
