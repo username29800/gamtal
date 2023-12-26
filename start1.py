@@ -247,7 +247,7 @@ while running:
     if pcu.colliderect(i):
       running = False
       rc = 0
-  if pcu.centerx == 1180:
+  if pcu.centerx >= 1178:
     running = False
     rc = 1
     print("escaped!")
