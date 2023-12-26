@@ -292,7 +292,14 @@ while running:
     pg.draw.rect(screen, (0, 0, 0), pcu)
   screen.blit(piu, (pcu.left, pcu.top))
   for i in obs3l:
-    pg.draw.rect(screen, (0, 255, 0), i, 8)
+    #    pg.draw.rect(screen, (0, 255, 0), i, 8)
+    if i.colliderect(pcu):
+      running = False
+      rc = 0
+  if pcu.centerx >= 1178:
+    running = False
+    rc = 1
+    print("escaped!")
   pg.display.flip()
   print(pg.mouse.get_pos())
 
