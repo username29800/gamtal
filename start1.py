@@ -320,7 +320,8 @@ if rc == 1:
   ]
   dri.append(pg.transform.flip(dri[0], False, True))
   door[1].left -= 734 - 562
-  door[1].right=562
+  door[1].right = 562
+  spd=20
 while running:
   for event in pg.event.get():
     if event.type == pg.QUIT:
@@ -346,11 +347,11 @@ while running:
   screen.blit(piu, (pcu.left, pcu.top))
   for i in door:
     screen.blit(dri[door.index(i)], (i.left, i.top))
-  if door[1].left >= 562 + door[1].w:
-    door[0].left -= 10
-    door[1].right -= 10
-  if door[1].right <= 562:
-    door[0].left += 10
-    door[1].right += 10
+  door[0].left+=spd
+  door[1].right+=spd
+  if door[0].left>=562+door[0].w:
+    spd=-20
+  else:
+    spd=20
   pg.display.flip()
   print(pg.mouse.get_pos())
