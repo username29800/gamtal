@@ -344,9 +344,9 @@ while running:
   screen.blit(piu, (pcu.left, pcu.top))
   for i in door:
     screen.blit(dri[door.index(i)], (i.left, i.top))
-    i.centerx += ((-1) ^ (door.index(i) + 2)) * 10
-  if door[1].centerx - door[0].centerx >= door[0].w:
-    door[0].right = 562
-    door[1].left = 562
+    i.centerx += 10
+  if door[1].left>=562+door[1].w:
+    door[0].left = 562
+    door[1].right = 562
   pg.display.flip()
   print(pg.mouse.get_pos())
