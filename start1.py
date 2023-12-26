@@ -399,7 +399,7 @@ while running:
   if hb == 1:
     pg.draw.rect(screen, (0, 0, 0), pcu)
   screen.blit(piu, (pcu.left, pcu.top))
+  pg.display.flip()
 '''font = pg.font.SysFont("arial", 30, True, True)
    text = font.render("시간: " + str(int(time.time() - start)), True)
-   screen.blit(text, (30, 30))'''
-  pg.display.flip()
+   screen.blit(text, (30, 30))''' # total time font
