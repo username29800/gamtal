@@ -323,6 +323,7 @@ while running:
   for event in pg.event.get():
     if event.type == pg.QUIT:
       running = False
+  clock.tick(1024)
   screen.blit(bg, (0, 0))
   #이미지 전환
   if tr[0] < 16:
@@ -343,9 +344,9 @@ while running:
   screen.blit(piu, (pcu.left, pcu.top))
   for i in door:
     screen.blit(dri[door.index(i)], (i.left, i.top))
-    i.centerx += ((-1) ^ (door.index(i) + 1))*10
-  if door[1].centerx-door[0].centerx>=door[0].w:
-    door[0].right=562
-    door[1].left=562
+    i.centerx += ((-1) ^ (door.index(i) + 1)) * 10
+  if door[1].centerx - door[0].centerx >= door[0].w:
+    door[0].right = 562
+    door[1].left = 562
   pg.display.flip()
   print(pg.mouse.get_pos())
