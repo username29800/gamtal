@@ -83,6 +83,8 @@ if rc == 1:
   c1, c2, cesc, rc = 0, 0, 0, 0
   escc = 2
   x_or_y = random.randint(0, 7)
+  #시작 시간 측정
+  start = time.time()
 while running:
   if pg.event.get(pg.QUIT):
     running = False
@@ -350,11 +352,12 @@ while running:
     screen.blit(dri[door.index(i)], (i.left, i.top))
   door[0].left += spd
   door[1].right += spd
-  if door[0].left >= 562 + door[0].w and spd == 20:
+  if door[0].left >= 562 + door[0].w and spd == 10:
     spd = -10
-  elif door[1].right <= 562 - door[1].w and spd == -20:
+  elif door[1].right <= 562 - door[1].w and spd == -10:
     spd = 10
   pg.display.flip()
   print(pg.mouse.get_pos())
 
-#
+#끝부분 시간 측정
+print(time.time() - start) # 총 시간 출력
