@@ -250,6 +250,8 @@ while running:
     running = False
     rc = 1
     print("escaped!")
+  if pg.mouse.get_pos()[0]>=1179
+    pg.mouse.set_pos(1178,pg.mouse.get_pos()[1])
   pg.display.flip()
 # stage 3
 if rc == 1:
@@ -257,7 +259,7 @@ if rc == 1:
   rc = 0
   pg.display.set_caption("STAGE 3")
   pg.time.wait(100)
-  pg.mouse.set_pos(2,590)
+  pg.mouse.set_pos(2, 590)
   pg.time.wait(100)
   bg = pg.image.load("./asset/bg/bg3.png")
   bg = pg.transform.scale(bg, (1180, 708))
