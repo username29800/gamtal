@@ -351,7 +351,7 @@ while running:
   door[1].right += spd
   if door[0].left >= 562 + door[0].w and spd == 20:
     spd = -20
-  elif spd==-20:
+  elif door[1].right<=562-door[1].w and spd == -20:
     spd = 20
   pg.display.flip()
   print(pg.mouse.get_pos())
