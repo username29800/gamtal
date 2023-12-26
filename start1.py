@@ -256,11 +256,8 @@ if rc == 1:
   running = True
   rc = 0
   pg.display.set_caption("STAGE 3")
-  for i in range(0,11):
-    pg.mouse.set_pos(0, 0)
   pg.time.wait(100)
-  for i in range(0, 3):
-    pg.mouse.set_pos(2, 1180 / 2)
+  pg.mouse.set_pos(2,590)
     pg.time.wait(100)
   bg = pg.image.load("./asset/bg/bg3.png")
   bg = pg.transform.scale(bg, (1180, 708))
