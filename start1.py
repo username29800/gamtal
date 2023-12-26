@@ -256,7 +256,8 @@ if rc == 1:
   running = True
   rc = 0
   pg.display.set_caption("STAGE 3")
-  pg.mouse.set_pos(0,0)
+  for i in range(0,11):
+    pg.mouse.set_pos(0, 0)
   pg.time.wait(100)
   for i in range(0, 3):
     pg.mouse.set_pos(2, 1180 / 2)
