@@ -325,6 +325,7 @@ if rc == 1:
   door[1].left -= 734 - 562
   door[1].right = 562
   spd = 20
+  ca=pg.Rect(388,225,714-388,507-225)
 while running:
   for event in pg.event.get():
     if event.type == pg.QUIT:
@@ -352,12 +353,30 @@ while running:
     screen.blit(dri[door.index(i)], (i.left, i.top))
   door[0].left += spd
   door[1].right += spd
-  if door[0].left >= 562 + door[0].w*2:
+  if door[0].left >= 562 + door[0].w * 2:
     spd = -10
-  if door[1].right <= 562 - door[1].w*2:
+  if door[1].right <= 562 - door[1].w * 2:
     spd = 10
   pg.display.flip()
   print(pg.mouse.get_pos())
-
-#끝부분 시간 측정
-print(time.time() - start)  # 총 시간 출력
+  if door[0].colliderect(pcu) or door[1].colliderect(pcu):
+    running = False
+    rc = 0
+  if ca.colliderect(pcu):
+    running = False
+    rc = 1
+    print("escaped!")
+#stage clear
+if rc == 0:
+  running = True
+  rc=0
+  print("야자를 무사히 탈출했습니다!")
+  print(str(int(time.time() - start))+"초가 걸렸습니다!")  # 총 시간 출력
+  pg.display.set_caption("야자를 무사히 탈출했습니다!"+str(int(time.time() - start))+"초가 걸렸습니다!")
+  bg = pg.image.load("./asset/bg/bg5.jpg")
+  bg = pg.transform.scale(bg, (1180, 708))
+  screen = pg.display.set_mode((1180, 708))
+while running:
+  for event in pg.event.get():
+    if event.type == pg.QUIT:
+      running = False
