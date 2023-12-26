@@ -46,7 +46,7 @@ if rc==1:
   screen.blit(bg,(0,0))
   pg.mouse.set_visible(False)
   tr=0
-  # assign rect to character 플레이어 사각형 생성
+  # assign rect to character 欌탣膺쟿壹뵠佾선 佚텢揶쏄낱�굨 佚문佚쉐
   pci0=pg.image.load("./asset/entity/char1.png")
   pci0=pg.transform.scale(pci0,(pci0.get_rect().size[0]/8,pci0.get_rect().size[1]/8))
   pci=pg.image.load("./asset/entity/char2.png")
@@ -78,7 +78,7 @@ while running:
   if pg.event.get(pg.QUIT):
     running=False
   clock.tick(1024)
-  #이미지 전환
+  #壹뵠沃섎챷�� 壹읈漿넎
   if tr<4:
     tr+=1
   else:
@@ -90,8 +90,8 @@ while running:
       pcu=pcr0
       piu=pci0
       tr=0
-  # add code for the first stage //1스테이지 코드 추가
-  # background 배경 draw
+  # add code for the first stage //1佾뮞欌�믪�뵠筌�� �굜遺얜굡 �빊遺쉼�
+  # background 獄쏄퀗瑗� draw
   screen.blit(bg,(0,0))  
   # player_mouse pointer tracker
   pcu.centerx,pcu.centery=pg.mouse.get_pos()[0],pg.mouse.get_pos()[1]
@@ -99,7 +99,7 @@ while running:
   if hb==1:
     pg.draw.rect(screen,(0,0,0),pcu)
   screen.blit(piu,(pcu.left,pcu.top))
-  # spawn obstacle 장애물(방해물) 생성
+  # spawn obstacle 壹삢佾막�눧�(獄쎻뫚鍮먫눧�) 佚문佚쉐
   if x_or_y!=0:
     if abs(obs0.bottom-pcu.top)>=2 and vl!=0:
       obs0.bottom+=int(abs(obs0.bottom-pcu.top)/2)
@@ -118,7 +118,7 @@ while running:
       running=False
       rc=0
   else:
-  # spawn obstacle 장애물(방해물) 생성
+  # spawn obstacle 壹삢佾막�눧�(獄쎻뫚鍮먫눧�) 佚문佚쉐
     if abs(obs1.right-pcu.left)>=2 and vl!=0:
       obs1.right+=int(abs(obs1.right-pcu.left)/2)
     else:
@@ -135,7 +135,7 @@ while running:
     if obs1.colliderect(pcu):
       running=False
       rc=0
-  # escape point 탈출구
+  # escape point 檣퉱�빊�뮄�럡
   hb=0
   if hb==1:
     pg.draw.rect(screen,(0,0,0),esc1)
