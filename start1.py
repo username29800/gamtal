@@ -377,7 +377,7 @@ if rc == 1:
   rc = 0
   print("야자를 무사히 탈출했습니다!")
   print(str(int(time.time() - start)) + "초가 걸렸습니다!")  # 총 시간 출력
-  pg.display.set_caption("야자를 무사히 탈출했습니다!" + str(int(time.time() - start)) +
+  pg.display.set_caption("야자를 무사히 탈출했습니다!" + str(round(time.time() - start,2)) +
                          "초가 걸렸습니다!")
   bg = pg.image.load("./asset/bg/bg5.png")
   bg = pg.transform.scale(bg, (1180, 708))
