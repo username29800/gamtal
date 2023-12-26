@@ -268,6 +268,7 @@ if rc == 1:
   for i in obs3l:
     obs3l1.append(pg.Rect(i))
   obs3l = obs3l1
+  pg.mouse.set_pos(2, 1180 / 2)
 while running:
   for event in pg.event.get():
     if event.type == pg.QUIT:
@@ -313,8 +314,9 @@ if rc == 1:
   screen = pg.display.set_mode((1180, 708))
   clock.tick(1024)
   door = [pg.Rect(562, 226, 734 - 562, 505 - 226)]
-  door.append(door[0].copy())
-  dri = pg.transform.scale(pg.image.load("./asset/entity/door1.png"),(door[0].w,door[0].h))
+  door.append(pg.transform.flip(door[0].copy(),False,True))
+  dri = pg.transform.scale(pg.image.load("./asset/entity/door1.png"),
+                           (door[0].w, door[0].h))
   door[1].left -= 734 - 562
 while running:
   for event in pg.event.get():
