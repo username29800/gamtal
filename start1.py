@@ -39,7 +39,7 @@ while running:
   else:
     pg.mouse.set_visible(True)
   pg.display.flip()
-if rc == 0:
+if rc == 1:
   running = True
   pg.display.set_caption("STAGE 1")
   bg = pg.image.load("./asset/bg/bg1.png")
