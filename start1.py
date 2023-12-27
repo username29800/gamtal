@@ -176,7 +176,7 @@ while running:
   #print(c1, c2, cesc, escc, pg.mouse.get_pos())
 
 # stage 2
-if rc == 0:
+if rc == 1:
   running = True
   rc = 0
   pg.display.set_caption("STAGE 2")
@@ -254,7 +254,7 @@ while running:
     pg.mouse.set_pos(1170, pg.mouse.get_pos()[1])
   pg.display.flip()
 # stage 3
-if rc == 0:
+if rc == 1:
   running = True
   rc = 0
   pg.display.set_caption("STAGE 3")
@@ -312,7 +312,7 @@ while running:
   #print(pg.mouse.get_pos())
 
 # stage 4
-if rc == 0:
+if rc == 1:
   running = True
   rc = 0
   pg.display.set_caption("STAGE 4")
